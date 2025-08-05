@@ -1,0 +1,5 @@
+<div *ngIf="quizBuilderService.getSelectedQuestionType() as selectedType" class="h-full w-full overflow-scroll hsb">
+    <app-mcq-middle-panel *ngIf="selectedType === QuestionType.MCQ"></app-mcq-middle-panel>
+    <app-msq-middle-panel *ngIf="selectedType === QuestionType.MSQ"></app-msq-middle-panel>
+    <app-true-false-middle-panel *ngIf="selectedType === QuestionType.TrueFalse"></app-true-false-middle-panel>
+</div>

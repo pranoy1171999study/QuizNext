@@ -1,0 +1,12 @@
+<div class="h-full w-full flex justify-center items-center relative aspect-video">
+    <button (click)="openMediaSelector()" class="absolute h-14 w-14 bg-black dark:bg-white flex justify-center items-center bg-transparent rounded-lg">
+        <svg class="w-10 h-10 text-blue-500 group-hover:text-blue-500 mb-2" fill="none" stroke="currentColor"
+            stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+        </svg>
+    </button>
+    <app-media-viewer class="w-full h-full" *ngIf="quizHelperService.getOriginalQuestionFormat(quizBulderService.getSelectedQuestion()) as question" [inputMedia]="question.media"></app-media-viewer>
+    <!-- <div #elblock>
+        {{quizHelperService.getOriginalQuestionFormat(quizBulderService.getSelectedQuestion())?.media |json}}
+    </div> -->
+</div>

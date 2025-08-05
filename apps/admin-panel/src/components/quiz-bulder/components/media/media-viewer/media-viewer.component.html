@@ -1,0 +1,24 @@
+<div *ngIf="media" class="w-full h-full">
+    <!-- Image -->
+    <img *ngIf="media.type === MediaType.IMAGE" [src]="media.url" class="w-full h-full object-fill" />
+
+    <!-- Video -->
+    <video *ngIf="media.type === MediaType.VIDEO" [src]="media.url" class="w-full h-full object-contain"
+        controls></video>
+
+    <!-- LaTeX -->
+    <math-field *ngIf="media.type === MediaType.LATEX" class="w-full h-full min-h-full min-w-full"
+        [value]="media.content || ''" read-only 
+    style="
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      --math-field-font-size: 1.5rem;
+    "></math-field>
+
+    <!-- YouTube -->
+    <iframe *ngIf="media.type === MediaType.YOUTUBE" class="w-full h-full" [src]="safeUrl" frameborder="0"
+        allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <div *ngIf="media.type === MediaType.YOUTUBE"></div>
+</div>

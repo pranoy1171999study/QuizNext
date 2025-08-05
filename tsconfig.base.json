@@ -14,7 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@quiznest/auth": ["shared/src/index.ts"],
+      "@quiznest/my-lib": ["libs/my-lib/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
