@@ -1,5 +1,6 @@
-import { BaseQuestion, McqQuestion, MsqQuestion, QuestionType, TrueFalseQuestion } from '@quiznest/auth';
+import { BaseQuestion, McqQuestion, MsqQuestion, TrueFalseQuestion } from './question-models';
 import { MediaItem } from './media-models';
+import { QuestionType } from './enums';
 
 export const demoQuestions: BaseQuestion[] = [
   {
