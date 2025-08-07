@@ -4,32 +4,6 @@ import { QuestionType } from './enums';
 
 export const demoQuestions: BaseQuestion[] = [
   {
-    id: 'q1',
-    questionText: 'What is the capital of France?',
-    type: QuestionType.MCQ,
-    options: [
-      { id: 'a1', text: 'Paris' },
-      { id: 'a2', text: 'Berlin' },
-      { id: 'a3', text: 'Madrid' },
-      { id: 'a4', text: 'Rome' },
-    ],
-    correctOptionId: 'a1',
-  } as McqQuestion,
-
-  {
-    id: 'q2',
-    questionText: 'Which of the following are prime numbers?',
-    type: QuestionType.MSQ,
-    options: [
-      { id: 'b1', text: '2' },
-      { id: 'b2', text: '3' },
-      { id: 'b3', text: '4' },
-      { id: 'b4', text: '5' },
-    ],
-    correctOptionIds: ['b1', 'b2', 'b4'],
-  } as MsqQuestion,
-
-  {
     id: 'q3',
     questionText: 'The sky is blue.',
     type: QuestionType.TrueFalse,

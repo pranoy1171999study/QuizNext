@@ -33,10 +33,10 @@ export class QuizHelperService {
       questionText: '',
       media: null,
       options: [
-        { id: 'A', text: '' },
-        { id: 'B', text: '' },
-        { id: 'C', text: '' },
-        { id: 'D', text: '' }
+        { id: 'A', media:null },
+        { id: 'B', media:null },
+        { id: 'C', media:null },
+        { id: 'D', media:null }
       ],
       correctOptionId: 'A',
     };
@@ -49,10 +49,10 @@ export class QuizHelperService {
       questionText: '',
       media: null,
       options: [
-        { id: 'A', text: '' },
-        { id: 'B', text: '' },
-        { id: 'C', text: '' },
-        { id: 'D', text: '' }
+        { id: 'A', media:null },
+        { id: 'B', media:null },
+        { id: 'C', media:null },
+        { id: 'D', media:null }
       ],
       correctOptionIds: ['A'],
     };

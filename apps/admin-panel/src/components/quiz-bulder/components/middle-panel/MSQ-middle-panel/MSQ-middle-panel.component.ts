@@ -4,10 +4,11 @@ import { QuizBuilderService } from '../../../quiz-builder-service';
 import { MsqQuestion } from '@quiznest/auth';
 import { FormsModule } from '@angular/forms';
 import { MainMediaSelectSectionComponent } from '../../media/main-media-select-section/main-media-select-section.component';
+import { OptionMediaSelectSectionComponent } from "../../media/option-media-select-section/option-media-select-section.component";
 
 @Component({
   selector: 'app-msq-middle-panel',
-  imports: [CommonModule, FormsModule, MainMediaSelectSectionComponent],
+  imports: [CommonModule, FormsModule, MainMediaSelectSectionComponent, OptionMediaSelectSectionComponent],
   templateUrl: './MSQ-middle-panel.component.html',
   styleUrl: './MSQ-middle-panel.component.css',
   standalone: true

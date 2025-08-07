@@ -1,0 +1,9 @@
+<div class="h-full max-h-20 w-full flex justify-center items-center relative aspect-video bg-red-400">
+    <app-media-viewer class="w-full h-full" *ngIf="media" [inputMedia]="media"></app-media-viewer>
+    <button (click)="openMediaSelector()" class="absolute h-14 w-14 cursor-pointer bg-black dark:bg-white flex justify-center items-center bg-transparent rounded-lg">
+        <svg class="w-10 h-10 text-blue-500 group-hover:text-blue-500 mb-2" fill="none" stroke="currentColor"
+            stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+        </svg>
+    </button>
+</div>

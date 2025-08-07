@@ -71,10 +71,10 @@ export class QuizBuilderService {
         questionText: 'What is the capital of France?',
         type: QuestionType.MCQ,
         options: [
-          { id: 'a1', text: 'Paris' },
-          { id: 'a2', text: 'Berlin' },
-          { id: 'a3', text: 'Madrid' },
-          { id: 'a4', text: 'Rome' },
+          { id: 'a1', media:null },
+          { id: 'a2', media:null },
+          { id: 'a3', media:null },
+          { id: 'a4', media:null },
         ],
         correctOptionId: 'a1',
       } as McqQuestion

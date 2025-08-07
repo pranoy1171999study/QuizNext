@@ -12,6 +12,7 @@
                 'border-blue-600 dark:border-orange-500': selectedQuestion.correctOptionIds.includes(option.id),
                 'border-slate-300': !selectedQuestion.correctOptionIds.includes(option.id)
             }">
+            <app-option-media-select-section></app-option-media-select-section>
                 <button 
                     class="h-[90%] aspect-square rounded-[50%] "
                     [ngClass]="{
