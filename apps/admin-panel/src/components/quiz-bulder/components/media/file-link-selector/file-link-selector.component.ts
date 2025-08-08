@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { BaseMedia, ImageMedia, MediaItem, MediaType, VideoMedia } from 'shared/src/core/media-models';
+import { BaseMedia, ImageMedia, MediaItem, VideoMedia } from 'shared/src/core/media-models';
+import { MediaType } from '@quiznest/auth';
 
 @Component({
   selector: 'app-file-link-selector',

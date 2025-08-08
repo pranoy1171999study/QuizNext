@@ -1,8 +1,9 @@
 import { Component, Input, OnInit, OnChanges, SimpleChanges, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BaseMedia, MediaItem, MediaType } from 'shared/src/core/media-models';
+import { BaseMedia, MediaItem} from 'shared/src/core/media-models';
 import { QuizHelperService } from '../../../quiz-helper-service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { MediaType } from '@quiznest/auth';
 
 @Component({
   selector: 'app-media-viewer',

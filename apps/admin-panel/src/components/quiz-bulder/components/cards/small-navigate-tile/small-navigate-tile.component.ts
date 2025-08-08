@@ -10,21 +10,27 @@ import { QuizBuilderService } from '../../../quiz-builder-service';
   selector: 'app-small-navigate-tile',
   templateUrl: './small-navigate-tile.component.html',
   styleUrl: './small-navigate-tile.component.css',
-  standalone:true,
+  standalone: true,
   imports: [
-    CommonModule, 
+    CommonModule,
     MCQTileComponent,
     MSQTileComponent,
     TrueFalseTileComponent
   ],
 })
 export class SmallNavigateTileComponent {
-  @Input() question:BaseQuestion|null = null;
+  @Input() question: BaseQuestion | null = null;
 
   QuizType = QuestionType;
 
-  constructor(public quizBuilderService:QuizBuilderService){
+  constructor(public quizBuilderService: QuizBuilderService) {
 
   }
+
+  onRemoveClick(event: MouseEvent, id: string) {
+    event.stopPropagation();
+    this.quizBuilderService.removeQuestion(id);
+  }
+
 
 }

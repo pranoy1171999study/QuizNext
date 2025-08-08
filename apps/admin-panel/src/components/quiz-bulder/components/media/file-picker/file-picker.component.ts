@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ImageMedia, MediaItem, MediaType, VideoMedia } from 'shared/src/core/media-models';
+import { ImageMedia, MediaItem, VideoMedia } from 'shared/src/core/media-models';
+import { MediaType } from '@quiznest/auth';
 
 @Component({
   selector: 'app-file-picker',

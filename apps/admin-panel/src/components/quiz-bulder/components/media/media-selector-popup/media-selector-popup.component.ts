@@ -6,12 +6,13 @@ import { MediaSelectImageComponent } from "../media-select-pages/media-select-im
 import { MediaSelectVideoComponent } from "../media-select-pages/media-select-video/media-select-video.component";
 import { MediaSelectYoutubeComponent } from "../media-select-pages/media-select-youtube/media-select-youtube.component";
 import { MediaSelectLatexComponent } from "../media-select-pages/media-select-latex/media-select-latex.component";
-import { LatexMedia, MediaItem } from 'shared/src/core/media-models';
+import { LatexMedia, MediaItem, TextMedia } from 'shared/src/core/media-models';
+import { MediaSelectTextComponent } from "../media-select-pages/media-select-text/media-select-text.component";
 
 @Component({
   selector: 'app-media-selector-popup',
   standalone: true,
-  imports: [CommonModule, MediaSelectImageComponent, MediaSelectVideoComponent, MediaSelectYoutubeComponent, MediaSelectLatexComponent],
+  imports: [CommonModule, MediaSelectImageComponent, MediaSelectVideoComponent, MediaSelectYoutubeComponent, MediaSelectLatexComponent, MediaSelectTextComponent],
   templateUrl: './media-selector-popup.component.html',
   styleUrls: ['./media-selector-popup.component.css']
 })
@@ -50,9 +51,10 @@ export class MediaSelectorPopupComponent {
   }
 
   getLatexMedia():LatexMedia{
-    console.log("Media ele",this.data.mediaElement);
-    
     return this.data.mediaElement as LatexMedia;
+  }
+  getTextMedia():TextMedia{
+    return this.data.mediaElement as TextMedia;
   }
 
 }

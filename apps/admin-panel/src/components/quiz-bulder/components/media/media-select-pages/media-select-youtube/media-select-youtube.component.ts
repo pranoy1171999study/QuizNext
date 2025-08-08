@@ -3,8 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FilePickerComponent } from '../../file-picker/file-picker.component';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { MediaItem, MediaType, YouTubeMedia } from 'shared/src/core/media-models';
+import { MediaItem, YouTubeMedia } from 'shared/src/core/media-models';
 import { QuizHelperService } from '../../../../quiz-helper-service';
+import { MediaType } from '@quiznest/auth';
 
 @Component({
   selector: 'app-media-select-youtube',

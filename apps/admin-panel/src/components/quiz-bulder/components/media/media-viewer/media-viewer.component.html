@@ -21,4 +21,7 @@
     <iframe *ngIf="media.type === MediaType.YOUTUBE" class="w-full h-full" [src]="safeUrl" frameborder="0"
         allow="autoplay; encrypted-media" allowfullscreen></iframe>
     <div *ngIf="media.type === MediaType.YOUTUBE"></div>
+    <div *ngIf="media.type === MediaType.TEXT"  class="w-full h-full">
+        {{media.content}}
+    </div>
 </div>

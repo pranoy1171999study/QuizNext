@@ -1,10 +1,4 @@
-export enum MediaType {
-  TEXT = 'TEXT',
-  IMAGE = 'IMAGE',
-  VIDEO = 'VIDEO',
-  YOUTUBE = 'YOUTUBE',
-  LATEX = 'LATEX'
-}
+import { MediaType } from "./enums";
 
 export interface BaseMedia {
   id: string;

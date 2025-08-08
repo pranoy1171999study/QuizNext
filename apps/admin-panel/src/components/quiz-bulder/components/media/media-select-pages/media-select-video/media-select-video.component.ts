@@ -2,8 +2,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FilePickerComponent } from '../../file-picker/file-picker.component';
 import { FileLinkSelectorComponent } from "../../file-link-selector/file-link-selector.component";
-import { MediaItem, MediaType, VideoMedia } from 'shared/src/core/media-models';
-import { demoMedias } from '@quiznest/auth';
+import { MediaItem, VideoMedia } from 'shared/src/core/media-models';
+import { demoMedias, MediaType } from '@quiznest/auth';
 import { MediaSearchResultComponent } from "../../../cards/media-search-result/media-search-result.component";
 
 @Component({

@@ -4,8 +4,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { MediaSelectorPopupComponent } from '../media-selector-popup/media-selector-popup.component';
 import { QuizBuilderService } from '../../../quiz-builder-service';
 import { QuizHelperService } from '../../../quiz-helper-service';
-import { MediaItem, MediaType } from 'shared/src/core/media-models';
+import { MediaItem} from 'shared/src/core/media-models';
 import { MediaViewerComponent } from "../media-viewer/media-viewer.component";
+import { MediaType } from '@quiznest/auth';
 
 @Component({
   selector: 'app-main-media-select-section',
