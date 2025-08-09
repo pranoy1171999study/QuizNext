@@ -17,6 +17,7 @@ import { MediaSelectTextComponent } from "../media-select-pages/media-select-tex
   styleUrls: ['./media-selector-popup.component.css']
 })
 export class MediaSelectorPopupComponent {
+  allowedMediaTypes: MediaType[] = [];
   MediaType = MediaType;
   isSidebarOpen = true;
   selectedMediaType: MediaType = MediaType.IMAGE;
@@ -24,13 +25,20 @@ export class MediaSelectorPopupComponent {
 
 
 
+
   constructor(
     public dialogRef: MatDialogRef<MediaSelectorPopupComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { 
-      mediaList: { type: 'image' | 'video'; url: string; id: string }[]
-      mediaElement:MediaItem|null
+    @Inject(MAT_DIALOG_DATA) public data: {
+      allowedMedia: MediaType[]
+      mediaElement: MediaItem | null
     }
-  ) { }
+  ) {
+    if (!this.data.allowedMedia || this.data.allowedMedia.length === 0) {
+      this.allowedMediaTypes = Object.values(MediaType);
+    } else {
+      this.allowedMediaTypes = data.allowedMedia;
+    }
+  }
 
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;
@@ -46,18 +54,18 @@ export class MediaSelectorPopupComponent {
   cancel() {
     this.dialogRef.close({ reason: 'closed' });
   }
-  emitSelectedMedia(media: any){
+  emitSelectedMedia(media: any) {
     this.dialogRef.close(media);
   }
 
-  getLatexMedia():LatexMedia|null{
-    if(this.data.mediaElement?.type !== MediaType.LATEX){
+  getLatexMedia(): LatexMedia | null {
+    if (this.data.mediaElement?.type !== MediaType.LATEX) {
       return null;
     }
     return this.data.mediaElement as LatexMedia;
   }
-  getTextMedia():TextMedia|null{
-    if(this.data.mediaElement?.type !== MediaType.TEXT){
+  getTextMedia(): TextMedia | null {
+    if (this.data.mediaElement?.type !== MediaType.TEXT) {
       return null;
     }
     return this.data.mediaElement as TextMedia;

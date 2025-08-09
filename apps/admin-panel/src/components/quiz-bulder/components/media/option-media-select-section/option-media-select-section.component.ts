@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MediaViewerComponent } from "../media-viewer/media-viewer.component";
-import { MediaItem } from 'shared/src/core/media-models';
+import { BaseMedia, MediaItem } from 'shared/src/core/media-models';
 import { MediaType } from '@quiznest/auth';
 import { MediaSelectorPopupComponent } from '../media-selector-popup/media-selector-popup.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -23,10 +23,18 @@ export class OptionMediaSelectSectionComponent {
 
   }
 
-  openMediaSelector() {
+  openMediaSelectorBaseMedia(media: BaseMedia | null | undefined) {
+    if (media && (media?.type === MediaType.LATEX || media?.type === MediaType.TEXT)) {
+      this.openMediaSelector(this.quizHelperService.getOriginalMediaFormat(media));
+    } else {
+      this.openMediaSelector(null);
+    }
+  }
+  openMediaSelector(media: MediaItem | null) {
     const dialogRef = this.dialog.open(MediaSelectorPopupComponent, {
       data: {
-        mediaElement: this.media
+        mediaElement: media,
+        allowedMedia: [MediaType.IMAGE,MediaType.LATEX,MediaType.TEXT]
       },
       maxWidth: 'none',
       panelClass: 'media-dialog-size'

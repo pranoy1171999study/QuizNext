@@ -90,9 +90,9 @@ Keep it higher than cdk overlay container so that the keyboard of Latex keyboad 
   background-color: transparent;
 } */
 
-.dark .angular-editor .angular-editor-textarea {
+/* .dark .angular-editor .angular-editor-textarea {
   @apply bg-gray-900 text-gray-100 border-gray-700;
-}
+} */
 
 .dark .angular-editor .angular-editor-textarea::placeholder {
   @apply placeholder-gray-400;
@@ -101,7 +101,6 @@ Keep it higher than cdk overlay container so that the keyboard of Latex keyboad 
 /* If the library injects inline styles, enforce with !important */
 .dark .angular-editor .angular-editor-textarea {
   background-color: transparent!important; /* bg-gray-900 */
-  color: #f3f4f6 !important;            /* text-gray-100 */
   border: 2px solid #374151 !important;     /* border-gray-700 */
   outline: 0 !important;
 }

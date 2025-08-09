@@ -1,9 +1,8 @@
-<div *ngIf="getSelectedQuestion() as selectedQuestion" class="w-full h-full flex flex-col justify-between items-center">
-    <!-- <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your message</label> -->
-    <textarea [(ngModel)]="selectedQuestion.questionText" id="message" rows="3" class="w-full text-center common-card-style" style="resize: none;" placeholder="Write a Question..."></textarea>
-
-    <div class="aspect-video w-[80%] common-card-style">
-        <app-main-media-select-section></app-main-media-select-section>
+<div *ngIf="getSelectedQuestion() as selectedQuestion" class="w-full min-h-full">
+    <textarea [(ngModel)]="selectedQuestion.questionText" id="message" rows="3"
+        class="w-full text-center common-card-style" style="resize: none;" placeholder="Write a Question..."></textarea>
+    <div class="w-full h-fit flex justify-center items-center mt-16 mb-16">
+        <app-main-media-select-section class="h-fit w-full"></app-main-media-select-section>
     </div>
     <div class="w-full grid grid-cols-2 gap-x-6 gap-y-4">
         <div *ngFor="let option of selectedQuestion.options"
@@ -12,15 +11,13 @@
                 'border-blue-600 dark:border-orange-500': selectedQuestion?.correctOptionId === option.id,
                 'border-slate-300': selectedQuestion?.correctOptionId !== option.id
             }">
-            <app-option-media-select-section [media]="quizHelperService.getOriginalMediaFormat(option.media)" (mediaChange)="option.media = $event" ></app-option-media-select-section>
-                <button 
-                    class="h-[70%] max-h-10 aspect-square rounded-[50%] absolute end-2"
-                    [ngClass]="{
+            <app-option-media-select-section [media]="quizHelperService.getOriginalMediaFormat(option.media)"
+                (mediaChange)="option.media = $event"></app-option-media-select-section>
+            <button class="h-[70%] max-h-10 aspect-square rounded-[50%] absolute end-2" [ngClass]="{
                         'bg-green-400': selectedQuestion?.correctOptionId === option.id,
                         'bg-slate-400': selectedQuestion?.correctOptionId !== option.id
-                    }"
-                    (click)="selectedQuestion.correctOptionId = option.id">
-                </button>
-            </div>
+                    }" (click)="selectedQuestion.correctOptionId = option.id">
+            </button>
+        </div>
     </div>
 </div>

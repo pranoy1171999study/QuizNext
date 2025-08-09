@@ -31,7 +31,8 @@ export class MainMediaSelectSectionComponent {
   openMediaSelector(media:MediaItem|null) {
     const dialogRef = this.dialog.open(MediaSelectorPopupComponent, {
       data: { 
-        mediaElement: media
+        mediaElement: media,
+        allowedMedia: [MediaType.IMAGE,MediaType.LATEX,MediaType.TEXT,MediaType.VIDEO,MediaType.YOUTUBE]
       },
       maxWidth: 'none',
       panelClass: 'media-dialog-size'
@@ -46,16 +47,4 @@ export class MainMediaSelectSectionComponent {
       }
     });
   }
-  // getPreExistMedia():MediaItem|null{
-  //   //If latex send it else null
-  //   const selectedQuestion = this.quizBulderService.getSelectedQuestion();
-    
-  //   if(selectedQuestion){
-  //     const media = this.quizHelperService.getOriginalQuestionFormat(selectedQuestion)?.media;
-  //     if(media && media.type === MediaType.LATEX){
-  //       return media as MediaItem;
-  //     }
-  //   }
-  //   return null;
-  // }
 }
