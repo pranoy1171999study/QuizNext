@@ -50,10 +50,16 @@ export class MediaSelectorPopupComponent {
     this.dialogRef.close(media);
   }
 
-  getLatexMedia():LatexMedia{
+  getLatexMedia():LatexMedia|null{
+    if(this.data.mediaElement?.type !== MediaType.LATEX){
+      return null;
+    }
     return this.data.mediaElement as LatexMedia;
   }
-  getTextMedia():TextMedia{
+  getTextMedia():TextMedia|null{
+    if(this.data.mediaElement?.type !== MediaType.TEXT){
+      return null;
+    }
     return this.data.mediaElement as TextMedia;
   }
 

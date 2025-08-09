@@ -21,7 +21,10 @@
     "rxjs": "~7.8.0",
     "zone.js": "~0.15.0",
     "mathlive": "^0.106.0",
-    "katex": "^0.16.9"
+    "katex": "^0.16.9",
+
+    "@kolkov/angular-editor": "3.0.0-beta.2",
+    "ngx-editor": "17.0.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~19.2.0",

@@ -6,10 +6,10 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
-  standalone:true
+  standalone: true
 })
-export class NavbarComponent implements AfterViewInit{
-ngAfterViewInit(): void {
+export class NavbarComponent implements AfterViewInit {
+  ngAfterViewInit(): void {
     this.initializeTheme();
   }
 
@@ -58,5 +58,5 @@ ngAfterViewInit(): void {
         localStorage.setItem('color-theme', 'dark');
       }
     }
-  }     
+  }
 }

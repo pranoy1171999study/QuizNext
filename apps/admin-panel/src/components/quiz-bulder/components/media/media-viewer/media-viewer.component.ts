@@ -2,7 +2,7 @@ import { Component, Input, OnInit, OnChanges, SimpleChanges, CUSTOM_ELEMENTS_SCH
 import { CommonModule } from '@angular/common';
 import { BaseMedia, MediaItem} from 'shared/src/core/media-models';
 import { QuizHelperService } from '../../../quiz-helper-service';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
 import { MediaType } from '@quiznest/auth';
 
 @Component({
@@ -36,14 +36,21 @@ export class MediaViewerComponent implements OnInit, OnChanges {
       this.media = this.quizHelperService.getOriginalMediaFormat(this.inputMedia);
       if(this.media?.type === MediaType.YOUTUBE){
         this.getSafeUrl(this.media?.url);
+      }else if(this.media?.type === MediaType.TEXT){
+        this.getSafeHtml(this.media?.content);
       }
     } else {
       this.media = null;
     }
   }
+
   safeUrl:SafeResourceUrl|null = null;
   getSafeUrl(url:string):SafeResourceUrl{
     this.safeUrl = this.quizHelperService.getSafeUrlForYoutube(url);
     return this.safeUrl;
+  }
+  safeHtml:SafeHtml|null = null;
+  getSafeHtml(content:string){
+    this.safeHtml = this.quizHelperService.getSafeHtml(content);
   }
 }

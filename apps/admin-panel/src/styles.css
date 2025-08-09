@@ -34,7 +34,7 @@ Keep it higher than cdk overlay container so that the keyboard of Latex keyboad 
   display: none;
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
+/* Hide scrollbar for IE, Edge and Firefox  start*/
 .hsb{
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
@@ -65,4 +65,48 @@ Keep it higher than cdk overlay container so that the keyboard of Latex keyboad 
   scrollbar-width: thin;
   scrollbar-color: #888 transparent;
 }
+
+
+/* Default (light mode) styling comes from the library */
+
+/* Dark mode override */
+/* Angular Editor dark theme using Tailwind's dark mode start*/
+.angular-editor .angular-editor-toolbar {
+  @apply bg-transparent border-gray-700 text-gray-200;
+}
+
+.angular-editor .angular-editor-toolbar .angular-editor-button {
+  background-color: transparent;
+  border: 0;
+}
+.angular-editor-toolbar{
+  border: 2px solid #374151 !important;  
+}
+
+/* .angular-editor .angular-editor-toolbar .angular-editor-button:hover {
+ background: transparent;
+}
+.dark .angular-editor .angular-editor-toolbar .angular-editor-button:hover {
+  background-color: transparent;
+} */
+
+.dark .angular-editor .angular-editor-textarea {
+  @apply bg-gray-900 text-gray-100 border-gray-700;
+}
+
+.dark .angular-editor .angular-editor-textarea::placeholder {
+  @apply placeholder-gray-400;
+}
+
+/* If the library injects inline styles, enforce with !important */
+.dark .angular-editor .angular-editor-textarea {
+  background-color: transparent!important; /* bg-gray-900 */
+  color: #f3f4f6 !important;            /* text-gray-100 */
+  border: 2px solid #374151 !important;     /* border-gray-700 */
+  outline: 0 !important;
+}
+
+/* Angular Editor dark theme using Tailwind's dark mode end*/
+
+
 

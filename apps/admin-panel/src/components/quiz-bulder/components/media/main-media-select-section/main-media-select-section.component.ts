@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MediaSelectorPopupComponent } from '../media-selector-popup/media-selector-popup.component';
 import { QuizBuilderService } from '../../../quiz-builder-service';
 import { QuizHelperService } from '../../../quiz-helper-service';
-import { MediaItem} from 'shared/src/core/media-models';
+import { BaseMedia, MediaItem} from 'shared/src/core/media-models';
 import { MediaViewerComponent } from "../media-viewer/media-viewer.component";
 import { MediaType } from '@quiznest/auth';
 
@@ -21,10 +21,17 @@ export class MainMediaSelectSectionComponent {
 
   }
 
-  openMediaSelector() {
+  openMediaSelectorBaseMedia(media:BaseMedia|null|undefined) {
+    if(media && (media?.type === MediaType.LATEX || media?.type === MediaType.TEXT)){
+      this.openMediaSelector(this.quizHelperService.getOriginalMediaFormat(media));
+    }else{
+      this.openMediaSelector(null);
+    }
+  }
+  openMediaSelector(media:MediaItem|null) {
     const dialogRef = this.dialog.open(MediaSelectorPopupComponent, {
       data: { 
-        mediaElement: this.getPreExistMedia()
+        mediaElement: media
       },
       maxWidth: 'none',
       panelClass: 'media-dialog-size'
@@ -39,16 +46,16 @@ export class MainMediaSelectSectionComponent {
       }
     });
   }
-  getPreExistMedia():MediaItem|null{
-    //If latex send it else null
-    const selectedQuestion = this.quizBulderService.getSelectedQuestion();
+  // getPreExistMedia():MediaItem|null{
+  //   //If latex send it else null
+  //   const selectedQuestion = this.quizBulderService.getSelectedQuestion();
     
-    if(selectedQuestion){
-      const media = this.quizHelperService.getOriginalQuestionFormat(selectedQuestion)?.media;
-      if(media && media.type === MediaType.LATEX){
-        return media as MediaItem;
-      }
-    }
-    return null;
-  }
+  //   if(selectedQuestion){
+  //     const media = this.quizHelperService.getOriginalQuestionFormat(selectedQuestion)?.media;
+  //     if(media && media.type === MediaType.LATEX){
+  //       return media as MediaItem;
+  //     }
+  //   }
+  //   return null;
+  // }
 }

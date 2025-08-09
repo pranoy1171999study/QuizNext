@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
 import { BaseQuestion, demoQuestions, McqQuestion, Quiz, QuestionType, TrueFalseQuestion, MsqQuestion, QuizQuestion, MediaType } from '@quiznest/auth';
 import { BehaviorSubject } from 'rxjs';
 import { BaseMedia, ImageMedia, LatexMedia, MediaItem,TextMedia, VideoMedia, YouTubeMedia } from 'shared/src/core/media-models';
@@ -104,6 +104,9 @@ export class QuizHelperService {
   }
 
 
+  getSafeHtml(content: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(content);
+  };
   getSafeUrlForYoutube(url: string): SafeResourceUrl {
     const videoId = this.extractYoutubeVideoId(url);
     const embedUrl = `https://www.youtube.com/embed/${videoId}`;
