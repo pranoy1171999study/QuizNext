@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SmallNavigateTileComponent } from '../cards/small-navigate-tile/small-navigate-tile.component';
 import { BaseQuestion, McqQuestion, QuestionType } from '@quiznest/auth';
-import { QuizBuilderService } from '../../quiz-builder-service';
+import { QuizEditorBuilderService } from '../../quiz-editor/quiz-editor-service';
 
 @Component({
   selector: 'app-left-sidebar',
@@ -16,7 +16,7 @@ import { QuizBuilderService } from '../../quiz-builder-service';
 export class LeftSidebarComponent {
   public QuizType = QuestionType;
 
-  constructor(public quizBuilderService:QuizBuilderService){
+  constructor(public quizBuilderService:QuizEditorBuilderService){
 
   }
 

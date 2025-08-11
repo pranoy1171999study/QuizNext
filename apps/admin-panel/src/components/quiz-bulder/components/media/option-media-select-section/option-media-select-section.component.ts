@@ -5,7 +5,7 @@ import { BaseMedia, MediaItem } from 'shared/src/core/media-models';
 import { MediaType } from '@quiznest/auth';
 import { MediaSelectorPopupComponent } from '../media-selector-popup/media-selector-popup.component';
 import { MatDialog } from '@angular/material/dialog';
-import { QuizBuilderService } from '../../../quiz-builder-service';
+import { QuizEditorBuilderService } from '../../../quiz-editor/quiz-editor-service';
 import { QuizHelperService } from '../../../quiz-helper-service';
 
 @Component({
@@ -19,7 +19,7 @@ export class OptionMediaSelectSectionComponent {
   @Input() media: MediaItem | null = null;
   @Output() mediaChange = new EventEmitter<MediaItem | null>();
 
-  constructor(private dialog: MatDialog, public quizBulderService: QuizBuilderService, public quizHelperService: QuizHelperService) {
+  constructor(private dialog: MatDialog, public quizBulderService: QuizEditorBuilderService, public quizHelperService: QuizHelperService) {
 
   }
 

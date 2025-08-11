@@ -5,6 +5,9 @@ import { Option } from "./models";
 export interface BaseQuestion {
   id: string;
   type: QuestionType;
+  marks:number;
+  maxTimeSec:number;
+  mediaDisplayTimeSec:number;
 }
 
 export interface McqQuestion extends BaseQuestion {
@@ -29,11 +32,3 @@ export interface TrueFalseQuestion extends BaseQuestion {
 }
 
 export type QuizQuestion = McqQuestion | MsqQuestion | TrueFalseQuestion;
-export interface Quiz {
-  id: string;
-  title: string;
-  description?: string;
-  createdBy: string;
-  questions: QuizQuestion[];
-  createdAt: Date;
-}

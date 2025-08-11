@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { MediaSelectorPopupComponent } from '../media-selector-popup/media-selector-popup.component';
-import { QuizBuilderService } from '../../../quiz-builder-service';
+import { QuizEditorBuilderService } from '../../../quiz-editor/quiz-editor-service';
 import { QuizHelperService } from '../../../quiz-helper-service';
 import { BaseMedia, MediaItem} from 'shared/src/core/media-models';
 import { MediaViewerComponent } from "../media-viewer/media-viewer.component";
@@ -17,7 +17,7 @@ import { MediaType } from '@quiznest/auth';
 })
 export class MainMediaSelectSectionComponent {
 
-  constructor(private dialog: MatDialog,public quizBulderService:QuizBuilderService,public quizHelperService:QuizHelperService){
+  constructor(private dialog: MatDialog,public quizBulderService:QuizEditorBuilderService,public quizHelperService:QuizHelperService){
 
   }
 

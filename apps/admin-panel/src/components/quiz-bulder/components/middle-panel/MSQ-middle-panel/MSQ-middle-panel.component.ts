@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { QuizBuilderService } from '../../../quiz-builder-service';
+import { QuizEditorBuilderService } from '../../../quiz-editor/quiz-editor-service';
 import { MsqQuestion } from '@quiznest/auth';
 import { FormsModule } from '@angular/forms';
 import { MainMediaSelectSectionComponent } from '../../media/main-media-select-section/main-media-select-section.component';
@@ -14,7 +14,7 @@ import { OptionMediaSelectSectionComponent } from "../../media/option-media-sele
   standalone: true
 })
 export class MSQMiddlePanelComponent {
-  constructor(public quizBuilderService: QuizBuilderService) {
+  constructor(public quizBuilderService: QuizEditorBuilderService) {
 
   }
   getSelectedQuestion(): MsqQuestion {

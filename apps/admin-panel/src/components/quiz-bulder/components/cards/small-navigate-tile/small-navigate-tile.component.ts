@@ -4,7 +4,7 @@ import { BaseQuestion, QuestionType } from '@quiznest/auth';
 import { MCQTileComponent } from "./MCQ-tile/MCQ-tile.component";
 import { MSQTileComponent } from './MSQ-tile/MSQ-tile.component';
 import { TrueFalseTileComponent } from './TrueFalse-tile/TrueFalse-tile.component';
-import { QuizBuilderService } from '../../../quiz-builder-service';
+import { QuizEditorBuilderService } from '../../../quiz-editor/quiz-editor-service';
 
 @Component({
   selector: 'app-small-navigate-tile',
@@ -23,7 +23,7 @@ export class SmallNavigateTileComponent {
 
   QuizType = QuestionType;
 
-  constructor(public quizBuilderService: QuizBuilderService) {
+  constructor(public quizBuilderService: QuizEditorBuilderService) {
 
   }
 

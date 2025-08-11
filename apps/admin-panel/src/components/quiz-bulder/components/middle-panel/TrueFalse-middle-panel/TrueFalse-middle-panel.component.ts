@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { QuizBuilderService } from '../../../quiz-builder-service';
+import { QuizEditorBuilderService } from '../../../quiz-editor/quiz-editor-service';
 import { TrueFalseQuestion } from '@quiznest/auth';
 import { FormsModule } from '@angular/forms';
 import { MainMediaSelectSectionComponent } from '../../media/main-media-select-section/main-media-select-section.component';
@@ -13,7 +13,7 @@ import { MainMediaSelectSectionComponent } from '../../media/main-media-select-s
   standalone: true,
 })
 export class TrueFalseMiddlePanelComponent {
-  constructor(public quizBuilderService: QuizBuilderService) {}
+  constructor(public quizBuilderService: QuizEditorBuilderService) {}
   getSelectedQuestion(): TrueFalseQuestion {
     return this.quizBuilderService.getSelectedQuestion() as TrueFalseQuestion;
   }

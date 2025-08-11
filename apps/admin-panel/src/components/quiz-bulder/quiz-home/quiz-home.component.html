@@ -1,50 +1,103 @@
-<!-- Example Angular Layout using Tailwind -->
-<div #quizeditor class="hidden sm:flex sm:flex-row h-[calc(100vh-60px)] w-full bg-gray-200 dark:bg-slate-300 ">
-  <aside class="w-1/4 max-h-full p-2 overflow-scroll hsb border-r-4 border-slate-300 dark:border-black">
-    <app-left-sidebar></app-left-sidebar>
-  </aside>
-  <main class="w-2/4 p-4 border-r-4 border-slate-300 dark:border-black">
-    <app-middle-panel></app-middle-panel>
-  </main>
-  <aside class="w-1/4 p-4">
-    <app-right-sidebar [editorDiv]="quizeditor"> </app-right-sidebar>
-  </aside>
-</div>
+<div class="min-h-screen w-full">
+  <div class="min-h-screen w-full bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6">
+    <div class="max-w-4xl mx-auto space-y-6">
 
+      <!-- Header -->
+      <div class="flex items-center justify-between">
+        <h1 class="text-2xl font-semibold">Quiz Editor</h1>
+        <div class="flex items-center gap-4">
 
-<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~For Mobile View~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+          <button (click)="saveQuiz()" class="px-4 py-2 bg-indigo-600 text-white rounded">Save</button>
+        </div>
+      </div>
 
-<div #quizeditor class="flex flex-col sm:hidden h-[calc(100vh-60px)] w-full">
-  <div class="w-full h-[145px] bg-gray-100 p-2 overflow-y-auto">
-    <app-left-sidebar></app-left-sidebar>
-  </div>
-  <!-- Wrapper -->
-  <div class="flex w-full relative" style="height: calc(100% - 140px);">
+      <!-- Basic Quiz Info -->
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm mb-1">Title</label>
+          <input class="w-full rounded border px-3 py-2 bg-gray-50 dark:bg-gray-700" [(ngModel)]="quiz.title"
+            (ngModelChange)="saveDraft()" />
+        </div>
 
-    <!-- Main Panel -->
-    <main class="w-full lg:w-2/3 p-4 bg-slate-300 transition-all duration-300">
-      <app-middle-panel></app-middle-panel>
-    </main>
+        <div>
+          <label class="block text-sm mb-1">Type</label>
+          <select class="w-full rounded border px-3 py-2 bg-gray-50 dark:bg-gray-700" [(ngModel)]="quiz.type"
+            (ngModelChange)="updateBase('type', $event)">
+            <option *ngFor="let type of quizTypes" [ngValue]="type">{{ type }}</option>
+          </select>
+        </div>
 
-    <!-- Toggle Button -->
-    <button (click)="toggleSidebar()"
-      class="absolute top-2 right-2 z-50 bg-gray-700 dark:bg-slate-100 text-white dark:text-black rounded-full p-2 hover:bg-gray-600 transition"
-      [ngClass]="{ 'right-4': isSidebarOpen, 'right-2': !isSidebarOpen }">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg">
-        <path [attr.d]="isSidebarOpen ? 'M15 19l-7-7 7-7' : 'M9 5l7 7-7 7'" stroke-linecap="round"
-          stroke-linejoin="round"></path>
-      </svg>
-    </button>
+        <div class="md:col-span-2">
+          <label class="block text-sm mb-1">Description</label>
+          <textarea class="w-full rounded border px-3 py-2 bg-gray-50 dark:bg-gray-700" [(ngModel)]="quiz.description"
+            (ngModelChange)="saveDraft()"></textarea>
+        </div>
 
-    <!-- Right Sidebar -->
-    <div
-      class="fixed top-[140px] right-0 bg-slate-200 dark:bg-slate-500 p-4 w-80 h-[calc(100%-140px)] shadow-lg z-40 transition-transform duration-300"
-      [ngClass]="{ 'translate-x-0': isSidebarOpen, 'translate-x-full': !isSidebarOpen }">
-      <app-right-sidebar [editorDiv]="quizeditor"></app-right-sidebar>
+        <div>
+          <label class="block text-sm mb-1">Created By</label>
+          <input class="w-full rounded border px-3 py-2 bg-gray-50 dark:bg-gray-700" [(ngModel)]="quiz.createdBy"
+            (ngModelChange)="saveDraft()" />
+        </div>
+
+        <div>
+          <label class="block text-sm mb-1">Active</label>
+          <select class="w-full rounded border px-3 py-2 bg-gray-50 dark:bg-gray-700" [(ngModel)]="quiz.isActive"
+            (ngModelChange)="saveDraft()">
+            <option [ngValue]="true">Active</option>
+            <option [ngValue]="false">Inactive</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm mb-1">Start Date</label>
+          <input type="datetime-local" class="w-full rounded border px-3 py-2 bg-gray-50 dark:bg-gray-700"
+            [(ngModel)]="quiz.startDate" (ngModelChange)="saveDraft()" />
+        </div>
+
+        <div>
+          <label class="block text-sm mb-1">Expiry Date</label>
+          <input type="datetime-local" class="w-full rounded border px-3 py-2 bg-gray-50 dark:bg-gray-700"
+            [(ngModel)]="quiz.expiryDate" (ngModelChange)="saveDraft()" />
+        </div>
+      </div>
+
+      <!-- Game Mode (Single Section) -->
+      <div *ngIf="quiz.type === 'GAME'" class="bg-white dark:bg-gray-800 rounded-lg shadow p-6 space-y-4">
+        <h2 class="text-lg font-medium">Game Section</h2>
+        <div class="p-3 rounded border bg-gray-50 dark:bg-gray-700 space-y-2">
+          <input class="w-full rounded border px-3 py-2 bg-gray-50 dark:bg-gray-700" [(ngModel)]="sections[0].title"
+            (ngModelChange)="saveDraft()" placeholder="Section Title" />
+          <textarea class="w-full rounded border px-3 py-2 bg-gray-50 dark:bg-gray-700"
+            [(ngModel)]="sections[0].description" (ngModelChange)="saveDraft()" placeholder="Description"></textarea>
+          <!-- Question Editor for game -->
+          <app-quiz-editor [questions]="sections[0].questions" (onChange)="updateQuestions(0, $event)">
+          </app-quiz-editor>
+
+        </div>
+      </div>
+
+      <!-- CBT Mode (Multiple Sections) -->
+      <div *ngIf="quiz.type === 'CBT'" class="bg-white dark:bg-gray-800 rounded-lg shadow p-6 space-y-4">
+        <div class="flex items-center justify-between">
+          <h2 class="text-lg font-medium">CBT Sections</h2>
+          <button class="px-3 py-1 bg-green-600 text-white rounded" (click)="addSection()">Add Section</button>
+        </div>
+
+        <div *ngFor="let sec of sections; let i = index"
+          class="p-3 rounded border bg-gray-50 dark:bg-gray-700 space-y-2">
+          <input class="w-full rounded border px-3 py-2 bg-gray-50 dark:bg-gray-700" [(ngModel)]="sec.title"
+            (ngModelChange)="saveDraft()" placeholder="Section Title" />
+          <textarea class="w-full rounded border px-3 py-2 bg-gray-50 dark:bg-gray-700" [(ngModel)]="sec.description"
+            (ngModelChange)="saveDraft()" placeholder="Description"></textarea>
+          <!-- Question Editor for this section -->
+          <app-quiz-editor [questions]="sec.questions" (onChange)="updateQuestions(i, $event)">
+          </app-quiz-editor>
+
+          <button class="px-3 py-1 bg-red-600 text-white rounded" (click)="removeSection(sec.id)">Remove
+            Section</button>
+        </div>
+      </div>
+
     </div>
   </div>
-
 </div>

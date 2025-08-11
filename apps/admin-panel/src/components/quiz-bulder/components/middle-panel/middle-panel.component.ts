@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MCQMiddlePanelComponent } from "./MCQ-middle-panel/MCQ-middle-panel.component";
 import { MSQMiddlePanelComponent } from "./MSQ-middle-panel/MSQ-middle-panel.component";
 import { TrueFalseMiddlePanelComponent } from "./TrueFalse-middle-panel/TrueFalse-middle-panel.component";
-import { QuizBuilderService } from '../../quiz-builder-service';
+import { QuizEditorBuilderService } from '../../quiz-editor/quiz-editor-service';
 import { QuestionType } from '@quiznest/auth';
 
 @Component({
@@ -17,7 +17,7 @@ export class MiddlePanelComponent {
 
   QuestionType = QuestionType;
 
-  constructor(public quizBuilderService:QuizBuilderService){
+  constructor(public quizBuilderService:QuizEditorBuilderService){
 
   }
 }

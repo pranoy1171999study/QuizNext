@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { QuizBuilderService } from '../../../../quiz-builder-service';
+import { QuizEditorBuilderService } from '../../../../quiz-editor/quiz-editor-service';
 import { QuestionType } from '@quiznest/auth';
 
 @Component({
@@ -13,7 +13,7 @@ import { QuestionType } from '@quiznest/auth';
 export class QuestionSettingsComponent {
   public questionTypes = Object.values(QuestionType);
 
-  constructor(public quizBuilderService:QuizBuilderService){
+  constructor(public quizBuilderService:QuizEditorBuilderService){
 
   }
   onQuestionTypeChange(event: Event) {

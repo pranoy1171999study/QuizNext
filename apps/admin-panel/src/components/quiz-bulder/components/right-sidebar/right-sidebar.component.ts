@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { QuizBuilderService } from '../../quiz-builder-service';
+import { QuizEditorBuilderService } from '../../quiz-editor/quiz-editor-service';
 import { QuestionType } from '@quiznest/auth';
 import { ThemeSettingsComponent } from "./panels/theme-settings/theme-settings.component";
 import { QuestionSettingsComponent } from "./panels/question-settings/question-settings.component";

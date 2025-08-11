@@ -1,3 +1,7 @@
+export enum QuizType {
+  GAME = 'GAME',
+  CBT = 'CBT'
+}
 export enum QuestionType {
   MCQ = 'MCQ',
   MSQ = 'MSQ',

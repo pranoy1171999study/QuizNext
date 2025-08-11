@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
-import { BaseQuestion, demoQuestions, McqQuestion, Quiz, QuestionType, TrueFalseQuestion, MsqQuestion, QuizQuestion, MediaType } from '@quiznest/auth';
+import { BaseQuestion, demoQuestions, McqQuestion, QuestionType, TrueFalseQuestion, MsqQuestion, QuizQuestion, MediaType } from '@quiznest/auth';
 import { BehaviorSubject } from 'rxjs';
 import { BaseMedia, ImageMedia, LatexMedia, MediaItem,TextMedia, VideoMedia, YouTubeMedia } from 'shared/src/core/media-models';
 @Injectable({
@@ -39,6 +39,9 @@ export class QuizHelperService {
         { id: 'D', media:null }
       ],
       correctOptionId: 'A',
+      marks: 1,
+      maxTimeSec: -1,
+      mediaDisplayTimeSec: -1
     };
   }
 
@@ -55,6 +58,9 @@ export class QuizHelperService {
         { id: 'D', media:null }
       ],
       correctOptionIds: ['A'],
+      marks: 1,
+      maxTimeSec: -1,
+      mediaDisplayTimeSec: -1
     };
   }
 
@@ -65,6 +71,9 @@ export class QuizHelperService {
       media: null,
       questionText: '',
       correctAnswer: true,
+      marks: 1,
+      maxTimeSec: -1,
+      mediaDisplayTimeSec: -1
     };
   }
 
