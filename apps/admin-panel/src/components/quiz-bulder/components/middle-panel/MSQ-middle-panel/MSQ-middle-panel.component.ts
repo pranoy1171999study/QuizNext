@@ -5,6 +5,7 @@ import { MsqQuestion } from '@quiznest/auth';
 import { FormsModule } from '@angular/forms';
 import { MainMediaSelectSectionComponent } from '../../media/main-media-select-section/main-media-select-section.component';
 import { OptionMediaSelectSectionComponent } from "../../media/option-media-select-section/option-media-select-section.component";
+import { QuizHelperService } from '../../../quiz-helper-service';
 
 @Component({
   selector: 'app-msq-middle-panel',
@@ -14,7 +15,7 @@ import { OptionMediaSelectSectionComponent } from "../../media/option-media-sele
   standalone: true
 })
 export class MSQMiddlePanelComponent {
-  constructor(public quizBuilderService: QuizEditorBuilderService) {
+  constructor(public quizBuilderService: QuizEditorBuilderService, public quizHelperService:QuizHelperService) {
 
   }
   getSelectedQuestion(): MsqQuestion {

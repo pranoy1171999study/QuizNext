@@ -1,6 +1,10 @@
+@import url('./styles/mathlive-fonts.css');
+@import url('./styles/mathlive-static.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 .media-dialog-size {
   @apply w-[80vw] h-[80vh];
@@ -11,9 +15,6 @@
           focus:ring-blue-500 focus:border-blue-500 
           dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
 }
-
-@import url('./styles/mathlive-fonts.css');
-@import url('./styles/mathlive-static.css');
 /*
 Keep it lower otherwise keyboard of latex will come below of it.
 */

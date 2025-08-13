@@ -1,5 +1,12 @@
-<div class="h-full max-h-20 w-full flex justify-center items-center relative aspect-video bg-red-400">
-    <app-media-viewer class="w-full h-full" *ngIf="media" [inputMedia]="media"></app-media-viewer>
+<div class="h-fit w-full flex justify-center items-center relative aspect-video">
+    <!-- <app-media-viewer class="w-full h-full max-w-[90%]" *ngIf="media" [inputMedia]="media"></app-media-viewer> -->
+     <app-media-viewer 
+  class="w-fit h-fit max-w-[90%] max-h-full" 
+  style="object-fit: contain;" 
+  *ngIf="media" 
+  [inputMedia]="media">
+</app-media-viewer>
+
     <button (click)="openMediaSelectorBaseMedia(media)"
         class="absolute h-14 w-14 cursor-pointer flex justify-center items-center rounded-lg">
         <svg class="w-10 h-10 mb-2" fill="none" viewBox="0 0 24 24">

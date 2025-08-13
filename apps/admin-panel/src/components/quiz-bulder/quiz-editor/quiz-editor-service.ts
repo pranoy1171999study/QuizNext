@@ -14,15 +14,26 @@ export class QuizEditorBuilderService {
   quizType$ = this.selectedQuestion.asObservable();
 
   constructor(public quizHelper: QuizHelperService) {
-    // Initialize with demoQuestions
-    this.questionsSubject.next(demoQuestions);
-    if (demoQuestions.length > 0) {
-      this.setSelectedQuestion(demoQuestions[0]);
-    }
+  }
+
+  public triggerQuestionsChange(): void {
+    const updated = [...this.questionsSubject.value];
+    this.questionsSubject.next(updated);
   }
 
   setQuestions(updatedQuestions: BaseQuestion[]): void {
     this.questionsSubject.next(updatedQuestions);
+
+    if (this.selectedQuestion && this.selectedQuestion.value && this.selectedQuestion.value.id) {
+      const found = updatedQuestions.find(q => q.id === this.selectedQuestion.value?.id);
+      if (found) {
+        this.setSelectedQuestion(found);
+      } else if (updatedQuestions.length > 0) {
+        this.setSelectedQuestion(updatedQuestions[0]);
+      }
+    } else if (updatedQuestions.length > 0) {
+      this.setSelectedQuestion(updatedQuestions[0]);
+    }
   }
 
   // ---- Question Management ----

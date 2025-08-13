@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
 import { BaseQuestion, demoQuestions, McqQuestion, QuestionType, TrueFalseQuestion, MsqQuestion, QuizQuestion, MediaType } from '@quiznest/auth';
 import { BehaviorSubject } from 'rxjs';
-import { BaseMedia, ImageMedia, LatexMedia, MediaItem,TextMedia, VideoMedia, YouTubeMedia } from 'shared/src/core/media-models';
+import { BaseMedia, ImageMedia, LatexMedia, MediaItem,HtmlMedia, VideoMedia, YouTubeMedia } from 'shared/src/core/media-models';
 @Injectable({
   providedIn: 'root',
 })
@@ -100,7 +100,7 @@ export class QuizHelperService {
       case MediaType.IMAGE:
         return media as ImageMedia;
       case MediaType.TEXT:
-        return media as TextMedia;
+        return media as HtmlMedia;
       case MediaType.VIDEO:
         return media as VideoMedia;
       case MediaType.YOUTUBE:

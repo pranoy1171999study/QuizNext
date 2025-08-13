@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LeftSidebarComponent } from "../components/left-sidebar/left-sidebar.component";
 import { RightSidebarComponent } from "../components/right-sidebar/right-sidebar.component";
@@ -15,7 +15,7 @@ import { QuizEditorBuilderService } from './quiz-editor-service';
   styleUrl: './quiz-editor.component.css',
   standalone: true
 })
-export class QuizEditorComponent implements OnInit, OnDestroy,OnChanges {
+export class QuizEditorComponent implements OnInit, OnDestroy, OnChanges {
   @Input() questions: QuizQuestion[] = [];
   @Output() onChange: EventEmitter<QuizQuestion[]> = new EventEmitter<QuizQuestion[]>();
 
@@ -33,6 +33,7 @@ export class QuizEditorComponent implements OnInit, OnDestroy,OnChanges {
   }
   ngOnChanges(changes: SimpleChanges) {
     if (changes['questions'] && changes['questions'].currentValue) {
+      const currentSelectedId = this.quizService.getSelectedQuestion()?.id;
       this.quizService.setQuestions(this.questions);
     }
   }

@@ -6,7 +6,7 @@ import { MediaSelectImageComponent } from "../media-select-pages/media-select-im
 import { MediaSelectVideoComponent } from "../media-select-pages/media-select-video/media-select-video.component";
 import { MediaSelectYoutubeComponent } from "../media-select-pages/media-select-youtube/media-select-youtube.component";
 import { MediaSelectLatexComponent } from "../media-select-pages/media-select-latex/media-select-latex.component";
-import { LatexMedia, MediaItem, TextMedia } from 'shared/src/core/media-models';
+import { LatexMedia, MediaItem, HtmlMedia } from 'shared/src/core/media-models';
 import { MediaSelectTextComponent } from "../media-select-pages/media-select-text/media-select-text.component";
 
 @Component({
@@ -38,6 +38,9 @@ export class MediaSelectorPopupComponent {
     } else {
       this.allowedMediaTypes = data.allowedMedia;
     }
+    if(this.allowedMediaTypes.length > 0){
+      this.selectedMediaType = this.allowedMediaTypes[0];
+    }
   }
 
   toggleSidebar() {
@@ -64,11 +67,11 @@ export class MediaSelectorPopupComponent {
     }
     return this.data.mediaElement as LatexMedia;
   }
-  getTextMedia(): TextMedia | null {
+  getTextMedia(): HtmlMedia | null {
     if (this.data.mediaElement?.type !== MediaType.TEXT) {
       return null;
     }
-    return this.data.mediaElement as TextMedia;
+    return this.data.mediaElement as HtmlMedia;
   }
 
 }

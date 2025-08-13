@@ -5,7 +5,7 @@ export interface BaseMedia {
   type: MediaType;
 }
 
-export interface TextMedia extends BaseMedia {
+export interface HtmlMedia extends BaseMedia {
   type: MediaType.TEXT;
   content: string;
 }
@@ -43,4 +43,4 @@ export interface LatexMedia extends BaseMedia {
 }
 
 
-export type MediaItem = TextMedia | ImageMedia | VideoMedia | YouTubeMedia | LatexMedia;
+export type MediaItem = HtmlMedia | ImageMedia | VideoMedia | YouTubeMedia | LatexMedia;

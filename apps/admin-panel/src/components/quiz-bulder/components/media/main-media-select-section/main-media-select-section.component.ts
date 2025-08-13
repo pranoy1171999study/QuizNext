@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewContainerRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { MediaSelectorPopupComponent } from '../media-selector-popup/media-selector-popup.component';
@@ -10,14 +10,14 @@ import { MediaType } from '@quiznest/auth';
 
 @Component({
   selector: 'app-main-media-select-section',
-  imports: [CommonModule, MediaSelectorPopupComponent, MediaViewerComponent],
+  imports: [CommonModule, MediaViewerComponent],
   templateUrl: './main-media-select-section.component.html',
   styleUrl: './main-media-select-section.component.css',
   standalone: true
 })
 export class MainMediaSelectSectionComponent {
 
-  constructor(private dialog: MatDialog,public quizBulderService:QuizEditorBuilderService,public quizHelperService:QuizHelperService){
+  constructor(private dialog: MatDialog,private viewContainerRef: ViewContainerRef,public quizBulderService:QuizEditorBuilderService,public quizHelperService:QuizHelperService){
 
   }
 
@@ -35,7 +35,8 @@ export class MainMediaSelectSectionComponent {
         allowedMedia: [MediaType.IMAGE,MediaType.LATEX,MediaType.TEXT,MediaType.VIDEO,MediaType.YOUTUBE]
       },
       maxWidth: 'none',
-      panelClass: 'media-dialog-size'
+      panelClass: 'media-dialog-size',
+      viewContainerRef: this.viewContainerRef,
     });
 
     dialogRef.afterClosed().subscribe(media => {
@@ -43,6 +44,7 @@ export class MainMediaSelectSectionComponent {
         const selectedQuestion = this.quizHelperService.getOriginalQuestionFormat(this.quizBulderService.getSelectedQuestion());
         if(selectedQuestion){
           selectedQuestion.media = media;
+          this.quizBulderService.triggerQuestionsChange();
         }
       }
     });

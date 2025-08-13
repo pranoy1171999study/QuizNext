@@ -1,10 +1,12 @@
 import { QuizType } from "./enums";
+import { MediaItem, HtmlMedia } from "./media-models";
 import { QuizQuestion } from "./question-models";
 
 export interface BaseQuiz {
   id: string;
   title: string;           
-  description?: string;    
+  description?: string;  
+  startingPage:HtmlMedia|null;  
   type: QuizType;         
   createdBy: string;       
   createdAt: Date;         
@@ -18,8 +20,8 @@ export interface GameQuiz extends BaseQuiz {
     type:QuizType.GAME,
     questions:QuizQuestion[]
 }
-export interface CbtQuiz extends BaseQuiz {
-    type:QuizType.CBT,
+export interface PracticeSetQuiz extends BaseQuiz {
+    type:QuizType.PRACTICE_SET,
     sections:QuizSection[]
 }
 
@@ -27,9 +29,9 @@ export interface QuizSection {
   id: string;                        
   title: string;                     
   description?: string;              
-  disclaimer?: string | null;        
+  disclaimer?: HtmlMedia|null;        
   timeLimitMinutes?: number;
   questions:QuizQuestion[]
 }
 
-export type QuizItem = GameQuiz | CbtQuiz;
+export type QuizItem = GameQuiz | PracticeSetQuiz;

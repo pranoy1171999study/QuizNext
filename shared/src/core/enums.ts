@@ -1,6 +1,6 @@
 export enum QuizType {
   GAME = 'GAME',
-  CBT = 'CBT'
+  PRACTICE_SET = 'PRACTICE_SET'
 }
 export enum QuestionType {
   MCQ = 'MCQ',

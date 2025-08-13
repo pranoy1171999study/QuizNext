@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MediaItem, TextMedia } from 'shared/src/core/media-models';
+import { MediaItem, HtmlMedia } from 'shared/src/core/media-models';
 import { FormsModule } from '@angular/forms';
 import { MediaType } from '@quiznest/auth';
 import { AngularEditorConfig, AngularEditorModule } from '@kolkov/angular-editor';
@@ -13,7 +13,7 @@ import { AngularEditorConfig, AngularEditorModule } from '@kolkov/angular-editor
   standalone: true,
 })
 export class MediaSelectTextComponent implements OnInit {
-  @Input() textInput: TextMedia | null = null;
+  @Input() textInput: HtmlMedia | null = null;
   @Output() textOutput = new EventEmitter<MediaItem>();
 
   ngOnInit(): void {
@@ -40,7 +40,7 @@ export class MediaSelectTextComponent implements OnInit {
   
   addText() {
     if (!this.textInput) return;
-    const newLatex: TextMedia = {
+    const newLatex: HtmlMedia = {
       ...this.textInput,
       id: crypto.randomUUID()
     };
