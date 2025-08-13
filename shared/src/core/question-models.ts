@@ -1,5 +1,5 @@
-import { QuestionType } from "./enums";
-import { BaseMedia } from "./media-models";
+import { MediaType, QuestionType } from "./enums";
+import { BaseMedia, MediaItem } from "./media-models";
 import { Option } from "./models";
 
 export interface BaseQuestion {
@@ -13,21 +13,21 @@ export interface BaseQuestion {
 export interface McqQuestion extends BaseQuestion {
   type: QuestionType.MCQ;
   questionText: string;
-  media:BaseMedia|null;
+  media:MediaItem|null;
   options: Option[];
   correctOptionId: string;
 }
 export interface MsqQuestion extends BaseQuestion {
   type: QuestionType.MSQ;
   questionText: string;
-  media:BaseMedia|null;
+  media:MediaItem|null;
   options: Option[];
   correctOptionIds: string[];
 }
 export interface TrueFalseQuestion extends BaseQuestion {
   type: QuestionType.TrueFalse;
   questionText: string;
-  media:BaseMedia|null;
+  media:MediaItem|null;
   correctAnswer: boolean;
 }
 

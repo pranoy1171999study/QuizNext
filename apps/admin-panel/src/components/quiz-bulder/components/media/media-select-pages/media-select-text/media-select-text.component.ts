@@ -20,7 +20,7 @@ export class MediaSelectTextComponent implements OnInit {
     if (!this.textInput) {
       this.textInput = {
         id: crypto.randomUUID(),
-        type: MediaType.TEXT,
+        type: MediaType.HTML,
         content: ""
       }
     }

@@ -1,9 +1,4 @@
-<div #quizviewer class="flex flex-col h-[calc(100vh-97px)] w-full bg-gray-200 dark:bg-slate-300 ">
-    <div class="h-full flex-grow-0 flex justify-center items-center overflow-y-scroll hsb">
-        <!--Put Quiz Details here-->
-        Put Quiz Details here
-    </div>
-    <div class="h-fit py-4 flex justify-center items-center">
-        <button type="button" class="h-fit w-28 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Start Now</button>
-    </div>
+<div class="w-full h-full">
+    <app-game-quiz *ngIf="quiz?.type === QuizType.GAME" [quizDetails]="getGameQuiz()"></app-game-quiz>
+    <app-practice-set-quiz *ngIf="quiz?.type === QuizType.PRACTICE_SET" [quizDetails]="getPracticeSetQuiz()"></app-practice-set-quiz>
 </div>

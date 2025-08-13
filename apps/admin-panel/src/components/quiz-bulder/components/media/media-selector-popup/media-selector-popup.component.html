@@ -84,10 +84,10 @@
                         Latex
                     </button>
                 </li>
-                <li *ngIf="allowedMediaTypes.includes(MediaType.TEXT)" (click)="selectedMediaType = MediaType.TEXT">
+                <li *ngIf="allowedMediaTypes.includes(MediaType.HTML)" (click)="selectedMediaType = MediaType.HTML">
                     <button class="w-full flex items-center text-left p-2 rounded" [ngClass]="{
-                        'bg-blue-600 dark:bg-amber-600 text-white dark:text-black': selectedMediaType === MediaType.TEXT,
-                        'hover:bg-gray-200 dark:hover:bg-gray-700': selectedMediaType !== MediaType.TEXT
+                        'bg-blue-600 dark:bg-amber-600 text-white dark:text-black': selectedMediaType === MediaType.HTML,
+                        'hover:bg-gray-200 dark:hover:bg-gray-700': selectedMediaType !== MediaType.HTML
                     }">
                         <!-- Text Icon -->
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24"
@@ -112,6 +112,6 @@
         <app-media-select-latex [latexInput]="getLatexMedia()" (latexOutput)="emitSelectedMedia($event)"
             *ngIf="selectedMediaType === MediaType.LATEX"></app-media-select-latex>
         <app-media-select-text [textInput]="getTextMedia()" (textOutput)="emitSelectedMedia($event)"
-            *ngIf="selectedMediaType === MediaType.TEXT"></app-media-select-text>
+            *ngIf="selectedMediaType === MediaType.HTML"></app-media-select-text>
     </section>
 </div>

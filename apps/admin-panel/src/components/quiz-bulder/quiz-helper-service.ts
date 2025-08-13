@@ -99,7 +99,7 @@ export class QuizHelperService {
     switch (media.type) {
       case MediaType.IMAGE:
         return media as ImageMedia;
-      case MediaType.TEXT:
+      case MediaType.HTML:
         return media as HtmlMedia;
       case MediaType.VIDEO:
         return media as VideoMedia;

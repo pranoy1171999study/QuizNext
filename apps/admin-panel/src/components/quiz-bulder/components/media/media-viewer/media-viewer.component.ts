@@ -16,7 +16,7 @@ import { MediaType } from '@quiznest/auth';
 export class MediaViewerComponent implements OnInit, OnChanges {
   MediaType = MediaType;
 
-  @Input() inputMedia: BaseMedia | null = null;
+  @Input() inputMedia: MediaItem | null = null;
   media: MediaItem | null = null;
 
   constructor(private quizHelperService: QuizHelperService) {}
@@ -36,7 +36,7 @@ export class MediaViewerComponent implements OnInit, OnChanges {
       this.media = this.quizHelperService.getOriginalMediaFormat(this.inputMedia);
       if(this.media?.type === MediaType.YOUTUBE){
         this.getSafeUrl(this.media?.url);
-      }else if(this.media?.type === MediaType.TEXT){
+      }else if(this.media?.type === MediaType.HTML){
         this.getSafeHtml(this.media?.content);
       }
     } else {

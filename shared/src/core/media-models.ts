@@ -6,7 +6,7 @@ export interface BaseMedia {
 }
 
 export interface HtmlMedia extends BaseMedia {
-  type: MediaType.TEXT;
+  type: MediaType.HTML;
   content: string;
 }
 

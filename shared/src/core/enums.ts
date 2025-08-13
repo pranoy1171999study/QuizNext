@@ -11,7 +11,7 @@ export enum QuestionType {
   // MatchTheFollowing = 'MATCH_THE_FOLLOWING',
 }
 export enum MediaType {
-  TEXT = 'TEXT',
+  HTML = 'HTML',
   IMAGE = 'IMAGE',
   VIDEO = 'VIDEO',
   YOUTUBE = 'YOUTUBE',

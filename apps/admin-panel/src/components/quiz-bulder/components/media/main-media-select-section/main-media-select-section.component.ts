@@ -21,8 +21,8 @@ export class MainMediaSelectSectionComponent {
 
   }
 
-  openMediaSelectorBaseMedia(media:BaseMedia|null|undefined) {
-    if(media && (media?.type === MediaType.LATEX || media?.type === MediaType.TEXT)){
+  openMediaSelectorBaseMedia(media:MediaItem|null|undefined) {
+    if(media && (media?.type === MediaType.LATEX || media?.type === MediaType.HTML)){
       this.openMediaSelector(this.quizHelperService.getOriginalMediaFormat(media));
     }else{
       this.openMediaSelector(null);
@@ -32,7 +32,7 @@ export class MainMediaSelectSectionComponent {
     const dialogRef = this.dialog.open(MediaSelectorPopupComponent, {
       data: { 
         mediaElement: media,
-        allowedMedia: [MediaType.IMAGE,MediaType.LATEX,MediaType.TEXT,MediaType.VIDEO,MediaType.YOUTUBE]
+        allowedMedia: [MediaType.IMAGE,MediaType.LATEX,MediaType.HTML,MediaType.VIDEO,MediaType.YOUTUBE]
       },
       maxWidth: 'none',
       panelClass: 'media-dialog-size',

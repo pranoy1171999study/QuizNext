@@ -21,7 +21,7 @@ export class QuizHomeComponent implements OnInit {
   ToolTips:any = null;
   private readonly DRAFT_KEY = 'quizDraft';
   quiz: BaseQuiz = {
-    id: Date.now().toString(),
+    id: crypto.randomUUID(),
     title: '',
     description: '',
     type: QuizType.GAME,
@@ -34,7 +34,7 @@ export class QuizHomeComponent implements OnInit {
   // Always at least one section for GAME
   sections: QuizSection[] = [
     {
-      id: Date.now().toString(),
+      id: crypto.randomUUID(),
       title: 'Default Section',
       description: '',
       disclaimer: null,
@@ -116,7 +116,7 @@ export class QuizHomeComponent implements OnInit {
       const data: PracticeSetQuiz = { ...this.quiz, type: QuizType.PRACTICE_SET, sections: this.sections };
       console.log('Saving CBTQuiz', data);
     }
-    localStorage.removeItem(this.DRAFT_KEY); // clear draft
+    localStorage.removeItem(this.DRAFT_KEY); 
   }
   discardDraft() {
     localStorage.removeItem(this.DRAFT_KEY);
@@ -155,7 +155,7 @@ export class QuizHomeComponent implements OnInit {
 
     this.openMediaSelector({
       currentMedia: this.sections[sectionIndex].disclaimer,
-      allowedMedia: [MediaType.TEXT],
+      allowedMedia: [MediaType.HTML],
       onSave: (media) => {
         this.sections[sectionIndex].disclaimer = media;
       }
@@ -166,7 +166,7 @@ export class QuizHomeComponent implements OnInit {
   openMediaSelectorForStartingPage() {
     this.openMediaSelector({
       currentMedia: this.quiz.startingPage,
-      allowedMedia: [MediaType.TEXT],
+      allowedMedia: [MediaType.HTML],
       onSave: (media) => {
         this.quiz.startingPage = media;
       }

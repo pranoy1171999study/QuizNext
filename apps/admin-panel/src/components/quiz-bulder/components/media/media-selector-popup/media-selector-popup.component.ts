@@ -68,7 +68,7 @@ export class MediaSelectorPopupComponent {
     return this.data.mediaElement as LatexMedia;
   }
   getTextMedia(): HtmlMedia | null {
-    if (this.data.mediaElement?.type !== MediaType.TEXT) {
+    if (this.data.mediaElement?.type !== MediaType.HTML) {
       return null;
     }
     return this.data.mediaElement as HtmlMedia;

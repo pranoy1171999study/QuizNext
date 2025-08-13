@@ -24,7 +24,7 @@ export class OptionMediaSelectSectionComponent {
   }
 
   openMediaSelectorBaseMedia(media: BaseMedia | null | undefined) {
-    if (media && (media?.type === MediaType.LATEX || media?.type === MediaType.TEXT)) {
+    if (media && (media?.type === MediaType.LATEX || media?.type === MediaType.HTML)) {
       this.openMediaSelector(this.quizHelperService.getOriginalMediaFormat(media));
     } else {
       this.openMediaSelector(null);
@@ -34,7 +34,7 @@ export class OptionMediaSelectSectionComponent {
     const dialogRef = this.dialog.open(MediaSelectorPopupComponent, {
       data: {
         mediaElement: media,
-        allowedMedia: [MediaType.IMAGE,MediaType.LATEX,MediaType.TEXT]
+        allowedMedia: [MediaType.IMAGE,MediaType.LATEX,MediaType.HTML]
       },
       maxWidth: 'none',
       panelClass: 'media-dialog-size'
