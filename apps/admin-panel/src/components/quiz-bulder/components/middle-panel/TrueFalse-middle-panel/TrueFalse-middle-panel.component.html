@@ -1,4 +1,4 @@
-<div *ngIf="getSelectedQuestion() as selectedQuestion" class="w-full min-h-full">
+<div *ngIf="getSelectedQuestion() as selectedQuestion" class="w-full min-h-full flex flex-col justify-between">
     <textarea [(ngModel)]="selectedQuestion.questionText" id="message" rows="3"
         class="w-full text-center common-card-style" style="resize: none;" placeholder="Write a Question..."></textarea>
 

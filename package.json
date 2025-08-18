@@ -24,7 +24,10 @@
     "katex": "^0.16.9",
 
     "@kolkov/angular-editor": "3.0.0-beta.2",
-    "ngx-editor": "17.0.1"
+    "ngx-editor": "17.0.1",
+    "canvas-confetti": "^1.6.0",
+
+    "@supabase/supabase-js": "^2.44.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~19.2.0",

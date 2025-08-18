@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ImageMedia, MediaItem, VideoMedia } from 'shared/src/core/media-models';
 import { MediaType } from '@quiznest/auth';
+import { generateRandomUUID } from 'apps/admin-panel/src/services/utils';
 
 @Component({
   selector: 'app-file-picker',
@@ -49,7 +50,7 @@ export class FilePickerComponent implements OnInit{
      * Upload in db and handle later
      * now return demo object
      */
-    const id = crypto.randomUUID();
+    const id = generateRandomUUID();
     const name = "sample name";
 
     if (this.fileType === MediaType.IMAGE) {

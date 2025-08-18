@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LeftSidebarComponent } from "../components/left-sidebar/left-sidebar.component";
 import { RightSidebarComponent } from "../components/right-sidebar/right-sidebar.component";
 import { MiddlePanelComponent } from "../components/middle-panel/middle-panel.component";
-import { QuizQuestion } from '@quiznest/auth';
+import { QuizQuestion, QuizType } from '@quiznest/auth';
 import { Subscription } from 'rxjs';
 import { QuizEditorBuilderService } from './quiz-editor-service';
 
@@ -16,6 +16,7 @@ import { QuizEditorBuilderService } from './quiz-editor-service';
   standalone: true
 })
 export class QuizEditorComponent implements OnInit, OnDestroy, OnChanges {
+  @Input() quizType:QuizType = QuizType.GAME;
   @Input() questions: QuizQuestion[] = [];
   @Output() onChange: EventEmitter<QuizQuestion[]> = new EventEmitter<QuizQuestion[]>();
 

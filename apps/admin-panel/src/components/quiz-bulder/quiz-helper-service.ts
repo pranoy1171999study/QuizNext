@@ -3,6 +3,7 @@ import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-brows
 import { BaseQuestion, demoQuestions, McqQuestion, QuestionType, TrueFalseQuestion, MsqQuestion, QuizQuestion, MediaType } from '@quiznest/auth';
 import { BehaviorSubject } from 'rxjs';
 import { BaseMedia, ImageMedia, LatexMedia, MediaItem,HtmlMedia, VideoMedia, YouTubeMedia } from 'shared/src/core/media-models';
+import { generateRandomUUID } from '../../services/utils';
 @Injectable({
   providedIn: 'root',
 })
@@ -28,7 +29,7 @@ export class QuizHelperService {
 
   createDummyMcqQuestion(): McqQuestion {
     return {
-      id: crypto.randomUUID(),
+      id: generateRandomUUID(),
       type: QuestionType.MCQ,
       questionText: '',
       media: null,
@@ -47,7 +48,7 @@ export class QuizHelperService {
 
   createDummyMsqQuestion(): MsqQuestion {
     return {
-      id: crypto.randomUUID(),
+      id: generateRandomUUID(),
       type: QuestionType.MSQ,
       questionText: '',
       media: null,
@@ -66,7 +67,7 @@ export class QuizHelperService {
 
   createDummyTrueFalseQuestion(): TrueFalseQuestion {
     return {
-      id: crypto.randomUUID(),
+      id: generateRandomUUID(),
       type: QuestionType.TrueFalse,
       media: null,
       questionText: '',

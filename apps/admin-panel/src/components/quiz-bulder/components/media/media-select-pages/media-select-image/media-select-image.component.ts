@@ -5,6 +5,7 @@ import { MediaSearchResultComponent } from "../../../cards/media-search-result/m
 import { FileLinkSelectorComponent} from "../../file-link-selector/file-link-selector.component";
 import { ImageMedia, MediaItem} from 'shared/src/core/media-models';
 import { demoMedias, MediaType } from '@quiznest/auth';
+import { generateRandomUUID } from 'apps/admin-panel/src/services/utils';
 
 @Component({
   selector: 'app-media-select-image',
@@ -27,7 +28,7 @@ export class MediaSelectImageComponent implements OnInit{
   }
 
   selectExistingImage(media: ImageMedia){
-    media.id = crypto.randomUUID();
+    media.id = generateRandomUUID();
     this.filesSelected.emit(media);
   }
 

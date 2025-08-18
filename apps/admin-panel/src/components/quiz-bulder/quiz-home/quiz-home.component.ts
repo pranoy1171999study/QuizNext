@@ -1,27 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { QuizEditorComponent } from '../quiz-editor/quiz-editor.component';
-import { BaseQuiz, QuizSection, QuizType, GameQuiz, QuizQuestion, MediaType, PracticeSetQuiz } from '@quiznest/auth';
+import { BaseQuiz, QuizSection, QuizType, GameQuiz, QuizQuestion, MediaType, PracticeSetQuiz, QuizItem } from '@quiznest/auth';
 import { FormsModule } from '@angular/forms';
 import { MediaItem } from 'shared/src/core/media-models';
 import { MatDialog } from '@angular/material/dialog';
 import { MediaSelectorPopupComponent } from '../components/media/media-selector-popup/media-selector-popup.component';
 import { QuizHelperService } from '../quiz-helper-service';
 import { TooltipService } from 'apps/admin-panel/src/services/tooltip-service';
+import { generateRandomUUID } from 'apps/admin-panel/src/services/utils';
+import { HtmlViewerComponent } from "../../shared/html-viewer/html-viewer.component";
 
 @Component({
   selector: 'app-quiz-home',
   standalone: true,
-  imports: [CommonModule, FormsModule, QuizEditorComponent],
+  imports: [CommonModule, FormsModule, QuizEditorComponent, HtmlViewerComponent],
   templateUrl: './quiz-home.component.html',
   styleUrls: ['./quiz-home.component.css'],
 })
 export class QuizHomeComponent implements OnInit {
   QuizType = QuizType;
-  ToolTips:any = null;
+  ToolTips: any = null;
   private readonly DRAFT_KEY = 'quizDraft';
   quiz: BaseQuiz = {
-    id: crypto.randomUUID(),
+    id: generateRandomUUID(),
     title: '',
     description: '',
     type: QuizType.GAME,
@@ -34,7 +36,7 @@ export class QuizHomeComponent implements OnInit {
   // Always at least one section for GAME
   sections: QuizSection[] = [
     {
-      id: crypto.randomUUID(),
+      id: generateRandomUUID(),
       title: 'Default Section',
       description: '',
       disclaimer: null,
@@ -44,7 +46,7 @@ export class QuizHomeComponent implements OnInit {
 
   quizTypes = Object.values(QuizType);
 
-  constructor(public dialog: MatDialog, private quizHelperService:QuizHelperService, public tooltipService:TooltipService) {
+  constructor(public dialog: MatDialog, private quizHelperService: QuizHelperService, public tooltipService: TooltipService) {
     this.ToolTips = tooltipService.ToolTip;
   }
 
@@ -112,11 +114,18 @@ export class QuizHomeComponent implements OnInit {
     if (this.quiz.type === QuizType.GAME) {
       const data: GameQuiz = { ...this.quiz, type: QuizType.GAME, questions: this.sections[0].questions };
       console.log('Saving GameQuiz', data);
+      this.saveQuizApi(data);
     } else {
       const data: PracticeSetQuiz = { ...this.quiz, type: QuizType.PRACTICE_SET, sections: this.sections };
       console.log('Saving CBTQuiz', data);
+      this.saveQuizApi(data);
     }
-    localStorage.removeItem(this.DRAFT_KEY); 
+  }
+  saveQuizApi(data:QuizItem){
+    localStorage.setItem('quiz-testing', JSON.stringify({
+      quiz: data,
+    }));
+    // localStorage.removeItem(this.DRAFT_KEY);
   }
   discardDraft() {
     localStorage.removeItem(this.DRAFT_KEY);
@@ -212,8 +221,8 @@ export class QuizHomeComponent implements OnInit {
     </button>
   `;
   }
- getSanitizeHtml(html:string){
-  return this.quizHelperService.getSafeHtml(html);
- }
+  getSanitizeHtml(html: string) {
+    return this.quizHelperService.getSafeHtml(html);
+  }
 
 }

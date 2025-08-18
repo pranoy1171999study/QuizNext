@@ -1,5 +1,5 @@
 <!-- Example Angular Layout using Tailwind -->
-<div #quizeditor class="hidden sm:flex sm:flex-row h-[calc(100vh-60px)] w-full bg-gray-200 dark:bg-slate-300 ">
+<div #quizeditor class="hidden sm:flex sm:flex-row h-[calc(100vh-60px)] w-full bg-gray-200 dark:bg-slate-500 ">
   <aside class="w-1/4 max-h-full p-2 overflow-scroll hsb border-r-4 border-slate-300 dark:border-black">
     <app-left-sidebar></app-left-sidebar>
   </aside>
@@ -7,7 +7,7 @@
     <app-middle-panel></app-middle-panel>
   </main>
   <aside class="w-1/4 p-4">
-    <app-right-sidebar [editorDiv]="quizeditor"> </app-right-sidebar>
+    <app-right-sidebar [quizType]="quizType" [editorDiv]="quizeditor"> </app-right-sidebar>
   </aside>
 </div>
 
@@ -43,7 +43,7 @@
     <div
       class="fixed top-[140px] right-0 bg-slate-200 dark:bg-slate-500 p-4 w-80 h-[calc(100%-140px)] shadow-lg z-40 transition-transform duration-300"
       [ngClass]="{ 'translate-x-0': isSidebarOpen, 'translate-x-full': !isSidebarOpen }">
-      <app-right-sidebar [editorDiv]="quizeditor"></app-right-sidebar>
+      <app-right-sidebar [quizType]="quizType" [editorDiv]="quizeditor"></app-right-sidebar>
     </div>
   </div>
 

@@ -5,6 +5,7 @@ import { FileLinkSelectorComponent } from "../../file-link-selector/file-link-se
 import { MediaItem, VideoMedia } from 'shared/src/core/media-models';
 import { demoMedias, MediaType } from '@quiznest/auth';
 import { MediaSearchResultComponent } from "../../../cards/media-search-result/media-search-result.component";
+import { generateRandomUUID } from 'apps/admin-panel/src/services/utils';
 
 @Component({
   selector: 'app-media-select-video',
@@ -26,7 +27,7 @@ export class MediaSelectVideoComponent {
     this.filesSelected.emit(media);
   }
   selectExistingVideo(media: VideoMedia){
-    media.id = crypto.randomUUID();
+    media.id = generateRandomUUID();
     this.filesSelected.emit(media);
   }
 }

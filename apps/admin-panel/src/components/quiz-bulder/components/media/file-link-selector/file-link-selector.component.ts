@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BaseMedia, ImageMedia, MediaItem, VideoMedia } from 'shared/src/core/media-models';
 import { MediaType } from '@quiznest/auth';
+import { generateRandomUUID } from 'apps/admin-panel/src/services/utils';
 
 @Component({
   selector: 'app-file-link-selector',
@@ -34,7 +35,7 @@ export class FileLinkSelectorComponent {
     if (this.isValidMedia) {
       if(this.mediaType === MediaType.IMAGE){
          this.linkSelected.emit({
-          id: crypto.randomUUID(),
+          id: generateRandomUUID(),
           name: "sample name",
           type: MediaType.IMAGE,
           url: this.fileUrl,
@@ -43,7 +44,7 @@ export class FileLinkSelectorComponent {
       }
       else{
         this.linkSelected.emit({
-          id: crypto.randomUUID(),
+          id: generateRandomUUID(),
           name: "sample name",
           type: MediaType.VIDEO,
           url: this.fileUrl,

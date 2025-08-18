@@ -4,6 +4,7 @@ import { MediaItem, HtmlMedia } from 'shared/src/core/media-models';
 import { FormsModule } from '@angular/forms';
 import { MediaType } from '@quiznest/auth';
 import { AngularEditorConfig, AngularEditorModule } from '@kolkov/angular-editor';
+import { generateRandomUUID } from 'apps/admin-panel/src/services/utils';
 
 @Component({
   selector: 'app-media-select-text',
@@ -19,7 +20,7 @@ export class MediaSelectTextComponent implements OnInit {
   ngOnInit(): void {
     if (!this.textInput) {
       this.textInput = {
-        id: crypto.randomUUID(),
+        id: generateRandomUUID(),
         type: MediaType.HTML,
         content: ""
       }
@@ -28,6 +29,7 @@ export class MediaSelectTextComponent implements OnInit {
   editorConfig: AngularEditorConfig = {
     editable: true,
     spellcheck: true,
+    sanitize: false,//Otherwise it will remove the css
     height: '400px',
     minHeight: '400px',
     maxHeight:'400px',
@@ -42,7 +44,7 @@ export class MediaSelectTextComponent implements OnInit {
     if (!this.textInput) return;
     const newLatex: HtmlMedia = {
       ...this.textInput,
-      id: crypto.randomUUID()
+      id: generateRandomUUID()
     };
     this.textOutput.emit(newLatex);
   }

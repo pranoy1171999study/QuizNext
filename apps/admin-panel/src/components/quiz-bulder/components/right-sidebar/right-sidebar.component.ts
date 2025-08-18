@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { QuizEditorBuilderService } from '../../quiz-editor/quiz-editor-service';
-import { QuestionType } from '@quiznest/auth';
+import { QuestionType, QuizType } from '@quiznest/auth';
 import { ThemeSettingsComponent } from "./panels/theme-settings/theme-settings.component";
 import { QuestionSettingsComponent } from "./panels/question-settings/question-settings.component";
 
@@ -18,6 +18,7 @@ export enum PanelType{
   standalone:true
 })
 export class RightSidebarComponent {
+  @Input() quizType:QuizType = QuizType.GAME;
   @Input() editorDiv:HTMLDivElement|null = null;
   public PanelType = PanelType;
   selectedPanel:PanelType = PanelType.QUESTION_SETTINGS;

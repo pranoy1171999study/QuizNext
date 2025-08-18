@@ -1,16 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { QuizEditorBuilderService } from '../../../../quiz-editor/quiz-editor-service';
-import { QuestionType } from '@quiznest/auth';
+import { QuestionType, QuizType } from '@quiznest/auth';
+import { FormsModule } from "@angular/forms";
 
 @Component({
   selector: 'app-question-settings',
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './question-settings.component.html',
   styleUrl: './question-settings.component.css',
   standalone: true
 })
 export class QuestionSettingsComponent {
+  @Input() quizType:QuizType = QuizType.GAME;
+  QuizType = QuizType;
   public questionTypes = Object.values(QuestionType);
 
   constructor(public quizBuilderService:QuizEditorBuilderService){

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BaseQuestion, demoQuestions, McqQuestion, QuestionType } from '@quiznest/auth';
 import { BehaviorSubject } from 'rxjs';
 import { QuizHelperService } from '../quiz-helper-service';
+import { generateRandomUUID } from 'apps/admin-panel/src/services/utils';
 
 @Injectable({
   providedIn: 'root',
@@ -117,7 +118,7 @@ export class QuizEditorBuilderService {
 
   getSampleQuestion(): McqQuestion {
     return {
-      id: crypto.randomUUID(),
+      id: generateRandomUUID(),
       questionText: 'What is the capital of France?',
       type: QuestionType.MCQ,
       options: [

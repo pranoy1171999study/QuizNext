@@ -146,8 +146,9 @@
           <!-- Preview -->
           <div class="mt-4">
             <label class="block text-sm mb-1">Preview</label>
-            <div class="border rounded p-4 bg-gray-50 dark:bg-gray-700 w-full max-h-[100vh] overflow-scroll"
-              [innerHTML]="getSanitizeHtml(quiz.startingPage.content)"></div>
+            <div class="border rounded p-4 bg-gray-50 dark:bg-gray-700 w-full max-h-[100vh] overflow-scroll">
+              <app-html-viewer [htmlContent]="quiz.startingPage.content"></app-html-viewer>
+            </div>
           </div>
 
           <div class="w-full h-fit flex items-center justify-end mt-6 gap-4">
@@ -178,7 +179,7 @@
           <textarea class="w-full rounded border px-3 py-2 bg-gray-50 dark:bg-gray-700"
             [(ngModel)]="sections[0].description" (ngModelChange)="saveDraft()" placeholder="Description"></textarea> -->
           <!-- Question Editor for game -->
-          <app-quiz-editor [questions]="sections[0].questions" (onChange)="updateQuestions(0, $event)">
+          <app-quiz-editor [quizType]="quiz.type" [questions]="sections[0].questions" (onChange)="updateQuestions(0, $event)">
           </app-quiz-editor>
 
         </div>
@@ -250,7 +251,7 @@
           </div>
 
           <!-- Question Editor for this section -->
-          <app-quiz-editor [questions]="sec.questions" (onChange)="updateQuestions(i, $event)">
+          <app-quiz-editor [quizType]="quiz.type" [questions]="sec.questions" (onChange)="updateQuestions(i, $event)">
           </app-quiz-editor>
 
           <div class="w-full flex justify-end">

@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { MediaItem, YouTubeMedia } from 'shared/src/core/media-models';
 import { QuizHelperService } from '../../../../quiz-helper-service';
 import { MediaType } from '@quiznest/auth';
+import { generateRandomUUID } from 'apps/admin-panel/src/services/utils';
 
 @Component({
   selector: 'app-media-select-youtube',
@@ -55,7 +56,7 @@ export class MediaSelectYoutubeComponent {
     if (!videoId) return;
 
     const media: YouTubeMedia = {
-      id: crypto.randomUUID(),
+      id: generateRandomUUID(),
       type: MediaType.YOUTUBE,
       videoId,
       url: this.youtubeUrl,

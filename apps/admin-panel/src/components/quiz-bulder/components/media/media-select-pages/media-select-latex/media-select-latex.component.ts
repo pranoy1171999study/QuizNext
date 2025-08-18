@@ -2,6 +2,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, Output, ViewChi
 import { CommonModule } from '@angular/common';
 import { LatexMedia, MediaItem } from 'shared/src/core/media-models';
 import { MediaType } from '@quiznest/auth';
+import { generateRandomUUID } from 'apps/admin-panel/src/services/utils';
 
 @Component({
   selector: 'app-media-select-latex',
@@ -20,7 +21,7 @@ export class MediaSelectLatexComponent implements AfterViewInit {
   ngOnInit(): void {
     if (!this.latexInput) {
       this.latexInput = {
-        id: crypto.randomUUID(),
+        id: generateRandomUUID(),
         type: MediaType.LATEX,
         content: ''
       };
@@ -49,7 +50,7 @@ export class MediaSelectLatexComponent implements AfterViewInit {
     if (!this.latexInput) return;
     const newLatex: LatexMedia = {
       ...this.latexInput,
-      id: crypto.randomUUID()
+      id: generateRandomUUID()
     };
     this.latexOutput.emit(newLatex);
   }

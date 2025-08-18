@@ -13,7 +13,9 @@ export interface BaseQuiz {
   updatedAt?: Date;        
   startDate?: Date;        
   expiryDate?: Date;       
-  isActive: boolean;       
+  isActive: boolean;  
+  keywords?:string[];
+  thumbnailUrl?:string;     
 }
 
 export interface GameQuiz extends BaseQuiz {

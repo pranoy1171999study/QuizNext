@@ -1,0 +1,67 @@
+<div class="p-6 rounded-2xl shadow-md bg-white dark:bg-gray-900 transition-colors">
+  <!-- CREATE Mode -->
+  <div *ngIf="mode === Action.CREATE" class="space-y-4">
+    <h2 class="text-xl font-bold text-gray-800 dark:text-gray-100">
+      Create New Channel
+    </h2>
+    <form class="space-y-4">
+      <input
+        type="text"
+        placeholder="Channel Name"
+        class="w-full p-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500"
+      />
+      <input
+        type="text"
+        placeholder="Handle"
+        class="w-full p-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500"
+      />
+      <textarea
+        placeholder="Description"
+        class="w-full p-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500"
+      ></textarea>
+      <button
+        type="button"
+        class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+      >
+        Create
+      </button>
+    </form>
+  </div>
+
+  <!-- EDIT Mode -->
+  <div *ngIf="mode === Action.EDIT && channel_data" class="space-y-4">
+    <h2 class="text-xl font-bold text-gray-800 dark:text-gray-100">
+      Edit Channel
+    </h2>
+    <form class="space-y-4">
+      <input
+        type="text"
+        [(ngModel)]="channel_data.name"
+        placeholder="Channel Name"
+        name="name"
+        class="w-full p-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500"
+      />
+      <input
+        type="text"
+        [(ngModel)]="channel_data.handle"
+        placeholder="Handle"
+        name="handle"
+        class="w-full p-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500"
+      />
+      <textarea
+        [(ngModel)]="channel_data.description"
+        placeholder="Description"
+        name="description"
+        class="w-full p-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500"
+      ></textarea>
+      <button
+        type="button"
+        class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+      >
+        Save Changes
+      </button>
+    </form>
+  </div>
+
+  <app-channel-view *ngIf="mode === Action.VIEW" [channel_data]="channel_data"></app-channel-view>
+</div>
