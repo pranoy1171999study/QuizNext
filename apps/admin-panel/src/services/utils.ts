@@ -9,3 +9,18 @@ function generateRandomUUIDInternal(): string {
     return v.toString(16);
   });
 }
+
+export function snakeToCamel(obj: any): any {
+  if (Array.isArray(obj)) {
+    return obj.map(v => snakeToCamel(v));
+  } else if (obj !== null && obj.constructor === Object) {
+    return Object.fromEntries(
+      Object.entries(obj).map(([k, v]) => [
+        k.replace(/_([a-z])/g, (_, g) => g.toUpperCase()),
+        v,
+      ])
+    );
+  }
+  return obj;
+}
+

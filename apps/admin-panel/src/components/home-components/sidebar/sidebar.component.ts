@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,4 +9,6 @@ import { CommonModule } from '@angular/common';
   styleUrl: './sidebar.component.css',
   standalone:true
 })
-export class SidebarComponent {}
+export class SidebarComponent {
+  constructor(public authService:AuthService){}
+}

@@ -84,7 +84,7 @@
 
       <!-- Sign Out -->
       <li>
-        <a href="#"
+        <a (click)="authService.signOut()"
           class="flex items-center p-2 rounded-lg hover:bg-danger bg-opacity-5 text-danger hover:text-danger-dark dark:hover:bg-danger-bg transition group">
           <svg class="w-5 h-5 text-danger dark:text-danger group-hover:text-danger-dark"
             fill="none" viewBox="0 0 18 16" xmlns="http://www.w3.org/2000/svg">
