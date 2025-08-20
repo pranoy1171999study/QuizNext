@@ -1,9 +1,0 @@
-{
-  "name": "quiznest-e2e",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "projectType": "application",
-  "sourceRoot": "apps/quiznest-e2e/src",
-  "implicitDependencies": ["quiznest"],
-  "// targets": "to see all targets run: nx show project quiznest-e2e --web",
-  "targets": {}
-}
